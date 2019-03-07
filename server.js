@@ -5,7 +5,7 @@ var cheerio = require("cheerio");
 
 var app = express();
 
-var databaseUrl = "scraper";
+var databaseUrl = process.env.MONGODB_URI || "scraper";
 var collections = ["scrapedData"];
 
 var db = mongojs(databaseUrl, collections);
