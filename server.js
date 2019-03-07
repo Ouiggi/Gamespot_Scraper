@@ -8,6 +8,8 @@ var app = express();
 var databaseUrl = process.env.MONGODB_URI || "scraper";
 var collections = ["scrapedData"];
 
+var PORT = process.env.PORT || 3000
+
 var db = mongojs(databaseUrl, collections);
 db.on("error", function(error) {
   console.log("Database Error:", error);
@@ -67,6 +69,6 @@ app.get("/scrape", function(req, res) {
   res.send("Scrape Complete");
 });
 
-app.listen(3000, function() {
+app.listen(PORT, function() {
   console.log("App running on port 3000!");
 });
